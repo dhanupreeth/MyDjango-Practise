@@ -20,5 +20,5 @@ from docker_stats import views
 urlpatterns = [
     path('index/', views.home),
     path('containers/', views.docker_containers),
-    path('images/', views.docker_images),
+#    path('images/', views.docker_images),
 ]
