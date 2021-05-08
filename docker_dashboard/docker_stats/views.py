@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from docker import Client
 import os
 import datetime
+import json
 
 # Create your views here.
 def home(request):
@@ -24,17 +25,12 @@ def home(request):
 def docker_containers(request):
     cli = Client(base_url='unix://var/run/docker.sock')
     containers = cli.containers()
-    return HttpResponse(containers)
-
-def docker_images(request):
-    cli = Client(base_url='unix://var/run/docker.sock')
-    images = cli.images()
-    return HttpResponse(images)
-
-
-      
-        
-    #Praba: 9443131312
-    
-    
-    
+    for container in containers:
+        container_info = {
+            'containername' :containers[0]['Names'], 
+            'containerid' :containers[0]['Id'], 
+            'containerimage' :containers[0]['Image'], 
+            'containerstate' :containers[0]['State'], 
+            'containerstatus' :containers[0]['Status']
+        }   
+    return render(request, 'docker_stats/containers.html', context=container_info)
