@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #f7f0fc;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #ffffff;
+            }
+        </style>
+        <title>Docker Dashboard</title>
+        <body>
+        <font color=maroon><center><h2>CTI Docker Container Views</h2></font></center></br>
+        <table>
+            <tr>
+                <th>Container Name</th>
+                <th>Container ID</th>
+                <th>Container Image</th>
+                <th>Container State</th>
+                <th>Container Status</th>
+            </tr>
+            <td>{{containername}}</td>
+            <td>{{containerid}}</td>
+            <td>{{containerimage}}</td>
+            <td><font color=green>{{containerstate}}</font></td>
+            <td>{{containerstatus}} </td>
+        </table>
+        </body>
+    </head>
+</html>
