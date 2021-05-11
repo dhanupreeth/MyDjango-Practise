@@ -25,12 +25,14 @@ def home(request):
 def docker_containers(request):
     cli = Client(base_url='unix://var/run/docker.sock')
     containers = cli.containers()
+    container_info = []
     for container in containers:
-        container_info = {
-            'containername' :containers[0]['Names'], 
-            'containerid' :containers[0]['Id'], 
-            'containerimage' :containers[0]['Image'], 
-            'containerstate' :containers[0]['State'], 
-            'containerstatus' :containers[0]['Status']
-        }   
-    return render(request, 'docker_stats/containers.html', context=container_info)
+        info = {
+            'container_name': container['Names'], 
+            'container_id': container['Id'], 
+            'container_state': container['State'],
+            'container_status': container['Status'],
+            'container_image': container['Image']
+            }
+        container_info.append(info)
+    return render(request, 'docker_stats/containers.html', context={'data': container_info})
