@@ -1,4 +1,5 @@
 <html>
+    <meta http-equiv="refresh" content="30">
     <head>
         <style>
             table {
@@ -24,15 +25,19 @@
             <tr>
                 <th>Container Name</th>
                 <th>Container ID</th>
-                <th>Container Image</th>
-                <th>Container State</th>
                 <th>Container Status</th>
+                <th>Container State</th>
+                <th>Container Image</th>
             </tr>
-            <td>{{containername}}</td>
-            <td>{{containerid}}</td>
-            <td>{{containerimage}}</td>
-            <td><font color=green>{{containerstate}}</font></td>
-            <td>{{containerstatus}} </td>
+            {% for i in data %}
+                <tr>
+                    <td>{{i.container_name}}</td>
+                    <td>{{i.container_id}}</td>
+                    <td bgcolor="#D1F2EB">{{i.container_state}}</td>
+                    <td>{{i.container_status}}</td>
+                    <td>{{i.container_image}}</td>
+                </tr>
+            {% endfor %}
         </table>
         </body>
     </head>
